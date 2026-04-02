@@ -1,0 +1,149 @@
+{
+  "student_permit": {
+    "title": "Study Permit (Canada)",
+    "overview": "A study permit allows you to study at a designated learning institution (DLI) in Canada.",
+    "renewal": {
+      "title": "Renewing Your Study Permit",
+      "apply_by": "Apply at least 30 days before expiry. If you apply before expiry you get implied status.",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Check your permit expiry date",
+          "deadline": "ASAP — must apply 30 days before expiry",
+          "priority": "high",
+          "details": "Find the date on your study permit card. Do not wait — processing takes 60-90 days.",
+          "link": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/extend-study-permit.html"
+        },
+        {
+          "step": 2,
+          "action": "Get your enrollment confirmation letter",
+          "deadline": "2-3 weeks before applying",
+          "priority": "high",
+          "details": "Request a letter from your university's registrar office confirming your enrollment status and program end date.",
+          "link": null
+        },
+        {
+          "step": 3,
+          "action": "Gather required documents",
+          "deadline": "1-2 weeks before applying",
+          "priority": "high",
+          "details": "You need: valid passport, current study permit, enrollment letter, proof of financial support ($10,000+/year), passport photos, and your transcript.",
+          "link": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/extend-study-permit/eligibility.html"
+        },
+        {
+          "step": 4,
+          "action": "Apply online through IRCC portal",
+          "deadline": "30+ days before current permit expires",
+          "priority": "high",
+          "details": "Create or log into your IRCC account. Pay the $150 CAD fee. Submit all documents electronically. You get 'implied status' automatically upon submission.",
+          "link": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html"
+        },
+        {
+          "step": 5,
+          "action": "Monitor your application status",
+          "deadline": "Ongoing (processing: 60-90 days)",
+          "priority": "medium",
+          "details": "Check your IRCC account weekly. Respond promptly to any requests for additional information.",
+          "link": null
+        }
+      ],
+      "important_notes": [
+        "While on implied status, you can continue studying and working under same conditions as your previous permit",
+        "You cannot leave Canada while on implied status — you would lose it",
+        "Off-campus work (20h/week) requires a Social Insurance Number (SIN) — apply at Service Canada"
+      ]
+    },
+    "work_while_studying": {
+      "on_campus": "Up to unlimited hours on campus — no work permit needed",
+      "off_campus": "Up to 20 hours/week during school year, full-time during breaks",
+      "requirements": "Must be enrolled full-time at a DLI, permit must say you can work off-campus",
+      "sin_required": true
+    }
+  },
+  "post_graduation": {
+    "title": "Post-Graduation Work Permit (PGWP)",
+    "overview": "Allows you to work in Canada after graduating. Valid for up to 3 years depending on program length.",
+    "eligibility": "Graduated from a 2+ year DLI program",
+    "duration": "Equal to your program length (max 3 years for 2+ year programs)",
+    "apply_by": "Within 180 days of getting your final marks",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Confirm your graduation and get official transcripts",
+        "priority": "high",
+        "details": "Request your degree/diploma and official transcripts from your institution."
+      },
+      {
+        "step": 2,
+        "action": "Apply for PGWP online",
+        "priority": "high",
+        "details": "Apply through IRCC. Fee: $255 CAD. Include transcripts, final letter of completion, passport, current study permit.",
+        "link": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/apply.html"
+      },
+      {
+        "step": 3,
+        "action": "Apply for Social Insurance Number (SIN) if not done",
+        "priority": "high",
+        "details": "Visit any Service Canada location. Free. Takes 1-2 days.",
+        "link": "https://www.canada.ca/en/employment-social-development/services/sin.html"
+      }
+    ]
+  },
+  "permanent_residency": {
+    "title": "Permanent Residency Pathways",
+    "overview": "Canada offers several pathways to permanent residency (PR) for international students and skilled workers.",
+    "pathways": [
+      {
+        "name": "Express Entry (Federal Skilled Worker)",
+        "description": "Points-based system for skilled workers. Eligible after getting Canadian work experience.",
+        "minimum_score": "~470+ CRS points (varies)",
+        "timeline": "6 months after ITA (Invitation to Apply)",
+        "requirements": ["1+ year Canadian work experience OR foreign experience", "Language test (IELTS/TEF)", "Educational Credential Assessment (ECA)"],
+        "link": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/works.html"
+      },
+      {
+        "name": "Quebec Experience Program (PEQ)",
+        "description": "Fastest PR pathway if you studied or worked in Quebec. Streamlined for Quebec graduates.",
+        "timeline": "3-6 months processing",
+        "requirements": ["Diploma from Quebec institution OR 12+ months Quebec work experience", "Intermediate French (B2 level)", "Valid status in Canada"],
+        "link": "https://www.quebec.ca/en/immigration/permanent/skilled-workers/quebec-experience-program"
+      },
+      {
+        "name": "Provincial Nominee Program (PNP) — Quebec",
+        "description": "Quebec selects its own immigrants. Certificate of Selection (CSQ) is the key document.",
+        "timeline": "12-24 months",
+        "requirements": ["French proficiency", "Job offer OR points criteria", "Intention to settle in Quebec"],
+        "link": "https://www.quebec.ca/en/immigration"
+      }
+    ],
+    "credit_recognition": {
+      "title": "Credential Recognition for Engineers/Tech",
+      "body": "Ordre des ingénieurs du Québec (OIQ)",
+      "steps": [
+        "Request official transcript evaluation by WES Canada (World Education Services)",
+        "Submit diploma and transcripts to OIQ for review",
+        "Pass the exam on Quebec engineering practice (if required)",
+        "Register as junior engineer, accumulate supervised experience"
+      ],
+      "wes_link": "https://www.wes.org/ca/",
+      "oiq_link": "https://www.oiq.qc.ca/en/"
+    }
+  },
+  "key_contacts": [
+    {
+      "name": "IRCC (Immigration, Refugees and Citizenship Canada)",
+      "phone": "1-888-242-2100",
+      "website": "https://www.canada.ca/en/immigration-refugees-citizenship.html"
+    },
+    {
+      "name": "Service Canada (SIN, EI, CPP)",
+      "phone": "1-800-206-7218",
+      "website": "https://www.canada.ca/en/employment-social-development/corporate/portfolio/service-canada.html"
+    },
+    {
+      "name": "Clinic Juridique du Mile-End (Free legal aid)",
+      "address": "5765 Côte-des-Neiges, Montreal",
+      "services": "Free immigration legal consultations"
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "pbeee-001",
+    "name": "Quebec Merit Scholarship for Foreign Students (PBEEE)",
+    "amount": "$25,000/year",
+    "provider": "Government of Quebec (FRQSC)",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["Montreal", "Quebec City", "Laval", "Sherbrooke"],
+      "levels": ["masters", "phd", "postdoc"]
+    },
+    "deadline": "November 1",
+    "description": "Premier merit scholarship from the Quebec government for outstanding international students pursuing graduate studies.",
+    "link": "https://frq.gouv.qc.ca/en/program/frqsc-pbeee/"
+  },
+  {
+    "id": "mitacs-001",
+    "name": "Mitacs Globalink Research Award",
+    "amount": "$6,000",
+    "provider": "Mitacs",
+    "eligibility": {
+      "fields": ["STEM", "Computer Science", "Engineering", "Science", "Mathematics"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["all"],
+      "levels": ["undergraduate", "masters", "phd"]
+    },
+    "deadline": "Rolling (apply anytime)",
+    "description": "Supports international research collaborations between Canadian and global institutions. Strong fit for CS/engineering students.",
+    "link": "https://www.mitacs.ca/en/programs/globalink"
+  },
+  {
+    "id": "mcgill-001",
+    "name": "McGill Entrance Excellence Award",
+    "amount": "$3,000",
+    "provider": "McGill University",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["Montreal"],
+      "levels": ["undergraduate"]
+    },
+    "deadline": "March 1",
+    "description": "Automatic consideration for high-achieving incoming students at McGill. Based on academic excellence at time of admission.",
+    "link": "https://www.mcgill.ca/studentaid/scholarships-awards/entrance"
+  },
+  {
+    "id": "concordia-001",
+    "name": "Concordia International Tuition Award",
+    "amount": "$4,000",
+    "provider": "Concordia University",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["Montreal"],
+      "levels": ["undergraduate", "masters"]
+    },
+    "deadline": "February 1",
+    "description": "Partial tuition waiver for international students demonstrating academic excellence. Renewable annually.",
+    "link": "https://www.concordia.ca/admissions/scholarships.html"
+  },
+  {
+    "id": "udem-001",
+    "name": "Université de Montréal International Excellence Scholarship",
+    "amount": "$5,000",
+    "provider": "Université de Montréal",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["Montreal"],
+      "levels": ["undergraduate", "masters"]
+    },
+    "deadline": "March 15",
+    "description": "Merit-based scholarship for incoming international students. French-language institution offering STEM and professional programs.",
+    "link": "https://bourses.umontreal.ca/accueil/"
+  },
+  {
+    "id": "nserc-001",
+    "name": "NSERC Undergraduate Student Research Award (USRA)",
+    "amount": "$7,500 (16 weeks)",
+    "provider": "Natural Sciences and Engineering Research Council of Canada",
+    "eligibility": {
+      "fields": ["Computer Science", "Engineering", "Mathematics", "Science", "STEM"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["all"],
+      "levels": ["undergraduate"]
+    },
+    "deadline": "February (varies by institution)",
+    "description": "Paid research experience at a Canadian university. Connects students with faculty-led research projects. Excellent for CS/software students.",
+    "link": "https://www.nserc-crsng.gc.ca/Students-Etudiants/UG-PC/USRA-BRPC_eng.asp"
+  },
+  {
+    "id": "rbc-001",
+    "name": "RBC Future Launch Scholarship",
+    "amount": "$2,000",
+    "provider": "RBC Foundation",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["all"],
+      "visa_types": ["student", "permanent_resident"],
+      "cities": ["all"],
+      "levels": ["undergraduate"]
+    },
+    "deadline": "April 30",
+    "description": "Supports youth in gaining work experience and career skills. Strong focus on leadership and community impact.",
+    "link": "https://www.rbc.com/community-social-impact/youth/rbc-future-launch.html"
+  },
+  {
+    "id": "cibc-001",
+    "name": "CIBC Youthvision Scholarship Program",
+    "amount": "$3,500",
+    "provider": "CIBC",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["all"],
+      "visa_types": ["student", "permanent_resident"],
+      "cities": ["all"],
+      "levels": ["undergraduate"]
+    },
+    "deadline": "March 31",
+    "description": "For students demonstrating leadership, community service, and financial need. Includes mentorship component.",
+    "link": "https://www.cibc.com/en/about-cibc/corporate-responsibility/community-involvement.html"
+  },
+  {
+    "id": "poly-001",
+    "name": "Polytechnique Montréal Excellence Scholarship",
+    "amount": "$3,000",
+    "provider": "Polytechnique Montréal",
+    "eligibility": {
+      "fields": ["Engineering", "Computer Science", "Software Engineering", "Electrical Engineering"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["Montreal"],
+      "levels": ["undergraduate", "masters"]
+    },
+    "deadline": "February 28",
+    "description": "Top engineering school in Quebec. Scholarship for high-GPA international students in engineering disciplines.",
+    "link": "https://www.polymtl.ca/aide-financiere/bourses-detudes"
+  },
+  {
+    "id": "frqnt-001",
+    "name": "FRQNT Graduate Scholarship (B2)",
+    "amount": "$17,500/year",
+    "provider": "Fonds de recherche du Québec – Nature et technologies",
+    "eligibility": {
+      "fields": ["Computer Science", "Engineering", "STEM", "Natural Sciences"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["Montreal", "Quebec City", "Sherbrooke"],
+      "levels": ["masters", "phd"]
+    },
+    "deadline": "October 1",
+    "description": "Prestigious Quebec government scholarship for STEM graduate students. Covers tuition and living allowance.",
+    "link": "https://frq.gouv.qc.ca/en/program/frqnt-masters-training-scholarship/"
+  },
+  {
+    "id": "ets-001",
+    "name": "ÉTS International Excellence Award",
+    "amount": "$2,500",
+    "provider": "École de technologie supérieure (ÉTS)",
+    "eligibility": {
+      "fields": ["Engineering", "Computer Science", "Software Engineering"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["Montreal"],
+      "levels": ["undergraduate", "masters"]
+    },
+    "deadline": "January 15",
+    "description": "Strong engineering school with co-op programs. Scholarship specifically for international students in technology fields.",
+    "link": "https://www.etsmtl.ca/Etudes/Admission-et-inscription/Aide-financiere"
+  },
+  {
+    "id": "msa-001",
+    "name": "Muslim Scholarship Foundation Canada",
+    "amount": "$2,000",
+    "provider": "Muslim Scholarship Foundation",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["Moroccan", "Algerian", "Tunisian", "Lebanese", "Egyptian", "Senegalese", "all Muslim-majority countries"],
+      "visa_types": ["student"],
+      "cities": ["all"],
+      "levels": ["undergraduate", "masters"]
+    },
+    "deadline": "May 31",
+    "description": "Financial support for Muslim students pursuing post-secondary education in Canada. Includes community mentorship.",
+    "link": "https://muslimscholarship.ca"
+  },
+  {
+    "id": "moroccan-001",
+    "name": "Association Québec-Maroc Education Grant",
+    "amount": "$1,500",
+    "provider": "Association Québec-Maroc",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["Moroccan"],
+      "visa_types": ["student"],
+      "cities": ["Montreal", "Quebec City"],
+      "levels": ["undergraduate", "masters"]
+    },
+    "deadline": "June 1",
+    "description": "Dedicated support for Moroccan students in Quebec. Community-driven with networking events and mentorship from established Moroccan-Canadians.",
+    "link": "https://aqm.ca"
+  },
+  {
+    "id": "td-001",
+    "name": "TD Scholarship for Community Leadership",
+    "amount": "$70,000 (over 4 years)",
+    "provider": "TD Bank",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["all"],
+      "visa_types": ["student", "permanent_resident"],
+      "cities": ["all"],
+      "levels": ["undergraduate"]
+    },
+    "deadline": "February 28",
+    "description": "Most generous private scholarship in Canada. Requires exceptional community leadership and academic achievement.",
+    "link": "https://www.td.com/ca/en/about-td/community/sponsorships-and-donations/td-scholarships"
+  },
+  {
+    "id": "vanier-001",
+    "name": "Vanier Canada Graduate Scholarship",
+    "amount": "$50,000/year (3 years)",
+    "provider": "Government of Canada",
+    "eligibility": {
+      "fields": ["all"],
+      "nationalities": ["all"],
+      "visa_types": ["student"],
+      "cities": ["all"],
+      "levels": ["phd"]
+    },
+    "deadline": "November 1",
+    "description": "Canada's most prestigious graduate scholarship. Targets world-class doctoral students with leadership potential.",
+    "link": "https://vanier.gc.ca/en/home-accueil.html"
+  }
+]

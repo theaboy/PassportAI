@@ -1,0 +1,139 @@
+[
+  {
+    "id": "cmm-001",
+    "name": "Communauté Marocaine de Montréal (CMM)",
+    "type": "cultural",
+    "nationalities": ["Moroccan"],
+    "cities": ["Montreal"],
+    "description": "The official hub for Moroccans in Montreal. Organizes cultural events, networking nights, Ramadan gatherings, and provides peer-to-peer immigration guidance.",
+    "services": ["networking", "cultural events", "immigration peer support", "job referrals"],
+    "contact": "info@cmm-montreal.org",
+    "facebook": "Communauté Marocaine de Montréal",
+    "members": "8,000+"
+  },
+  {
+    "id": "aqm-001",
+    "name": "Association Québec-Maroc (AQM)",
+    "type": "cultural-professional",
+    "nationalities": ["Moroccan"],
+    "cities": ["Montreal", "Quebec City"],
+    "description": "Bridges Moroccan and Quebec professional communities. Hosts business mixers, educational workshops, and advocates for Moroccan immigrants in Quebec.",
+    "services": ["professional networking", "scholarships", "workshops", "advocacy"],
+    "contact": "contact@aqm.ca",
+    "website": "https://aqm.ca",
+    "members": "2,500+"
+  },
+  {
+    "id": "mcbf-001",
+    "name": "Morocco-Canada Business Forum",
+    "type": "professional",
+    "nationalities": ["Moroccan"],
+    "cities": ["Montreal", "Toronto"],
+    "description": "Professional network connecting Moroccan entrepreneurs and executives in Canada. Key for skilled workers and those launching startups.",
+    "services": ["business networking", "mentorship", "investment connections", "startup support"],
+    "contact": "info@mcbf.ca",
+    "linkedin": "Morocco-Canada Business Forum"
+  },
+  {
+    "id": "mcm-001",
+    "name": "Marocains de Montréal (Facebook Group)",
+    "type": "community",
+    "nationalities": ["Moroccan"],
+    "cities": ["Montreal"],
+    "description": "Most active Moroccan community group in Montreal with 12,000+ members. The fastest way to get local advice — housing, halal food, job leads, community events.",
+    "services": ["local advice", "housing tips", "job leads", "social connections"],
+    "contact": "Facebook: Marocains de Montréal",
+    "members": "12,000+"
+  },
+  {
+    "id": "ymca-001",
+    "name": "YMCA Immigration Services Montreal",
+    "type": "settlement",
+    "nationalities": ["all"],
+    "cities": ["Montreal"],
+    "description": "Government-funded settlement services for all newcomers. Offers free French/English classes, job placement, credential recognition assistance, and social integration programs.",
+    "services": ["French/English classes", "job placement", "credential recognition", "social integration", "free services"],
+    "contact": "immigration@ymcaquebec.org",
+    "website": "https://www.ymcaquebec.org/en/immigration",
+    "phone": "514-849-8393"
+  },
+  {
+    "id": "caim-001",
+    "name": "Carrefour d'Aide aux Immigrants de Montréal (CAIM)",
+    "type": "settlement",
+    "nationalities": ["all"],
+    "cities": ["Montreal"],
+    "description": "Nonprofit providing comprehensive settlement services. Specialized legal immigration advice, document translation, and government application support.",
+    "services": ["legal immigration advice", "document translation", "government applications", "housing support"],
+    "contact": "info@caim.ca",
+    "website": "https://caim.ca",
+    "phone": "514-272-6060"
+  },
+  {
+    "id": "cimt-001",
+    "name": "Centre d'Intégration Multi-Ethnique de Montréal",
+    "type": "settlement",
+    "nationalities": ["all"],
+    "cities": ["Montreal"],
+    "description": "Multicultural integration center serving 40+ nationalities. Offers language training, job search workshops, cultural adaptation programs, and volunteer opportunities.",
+    "services": ["language training", "job workshops", "cultural adaptation", "volunteer programs"],
+    "contact": "info@cimtl.ca",
+    "phone": "514-344-0702"
+  },
+  {
+    "id": "techno-001",
+    "name": "Technovation Maroc-Canada",
+    "type": "tech-professional",
+    "nationalities": ["Moroccan"],
+    "cities": ["Montreal", "Toronto"],
+    "description": "Network for Moroccan tech professionals and students in Canada. Organizes hackathons, tech talks, startup showcases, and connects members with Canadian tech companies.",
+    "services": ["tech networking", "hackathons", "startup connections", "job referrals", "mentorship"],
+    "contact": "hello@technovationmc.ca",
+    "linkedin": "Technovation Maroc-Canada",
+    "slack": "technovation-mc.slack.com"
+  },
+  {
+    "id": "arab-001",
+    "name": "Arab World Montreal",
+    "type": "cultural",
+    "nationalities": ["Moroccan", "Algerian", "Tunisian", "Lebanese", "Egyptian", "Syrian", "all Arab"],
+    "cities": ["Montreal"],
+    "description": "Cultural hub for the Arab diaspora in Montreal. Arabic language classes, cultural events, Eid celebrations, and professional networking.",
+    "services": ["Arabic classes", "cultural events", "professional networking", "community support"],
+    "contact": "info@arabworldmtl.org",
+    "members": "5,000+"
+  },
+  {
+    "id": "mcm-mosq-001",
+    "name": "Muslim Community of Montreal (Mosquée Assalam)",
+    "type": "religious-community",
+    "nationalities": ["Moroccan", "all Muslim"],
+    "cities": ["Montreal"],
+    "description": "Largest Muslim community center in Montreal. Provides halal resources, prayer facilities, Ramadan programs, marriage services, and social support networks.",
+    "services": ["prayer facilities", "Ramadan programs", "social support", "halal resources", "community events"],
+    "contact": "info@assalammosque.ca",
+    "address": "7390 Boul Lacordaire, Montreal"
+  },
+  {
+    "id": "riiim-001",
+    "name": "Réseau pour l'Intégration des Immigrants et Immigrantes de Montréal (RIIM)",
+    "type": "integration",
+    "nationalities": ["all"],
+    "cities": ["Montreal"],
+    "description": "Network connecting immigrants with job opportunities, mentors, and employers in Montreal. Particularly strong for professionals in tech, finance, and engineering.",
+    "services": ["job placement", "mentorship", "employer connections", "professional development"],
+    "contact": "info@riimontreal.org"
+  },
+  {
+    "id": "hackqc-001",
+    "name": "Startup and Tech Community Montreal (Notman House)",
+    "type": "tech-professional",
+    "nationalities": ["all"],
+    "cities": ["Montreal"],
+    "description": "Montreal's premier startup ecosystem hub. Home to 100+ startups, weekly events, hackathons, and a network of tech employers actively recruiting international talent.",
+    "services": ["startup networking", "hackathons", "tech events", "job connections", "coworking"],
+    "contact": "info@notman.ca",
+    "website": "https://notman.org",
+    "address": "51 Sherbrooke W, Montreal"
+  }
+]
