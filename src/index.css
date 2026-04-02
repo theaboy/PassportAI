@@ -9,10 +9,21 @@
 
   body {
     margin: 0;
-    background-color: #0A0F1E;
+    background-color: #080c14;
     color: #F1F5F9;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
   }
 
   ::-webkit-scrollbar {
@@ -77,6 +88,24 @@
 
   .glow-blue {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.12);
+  }
+
+  .passport-page {
+    background-color: #080c14;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, #1a1f35 0%, transparent 60%),
+      radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: auto, 24px 24px;
+  }
+
+  .followup-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .mesh-bg {
@@ -277,6 +306,59 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Passport stamp hover lift */
+.passport-stamp {
+  transition: background-color 0.2s ease;
+}
+.passport-stamp:hover {
+  background-color: #161d26;
+}
+
+/* Scholarship card shimmer on hover */
+.scholarship-front {
+  overflow: hidden;
+}
+.scholarship-front::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245,158,11,0.14), transparent);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+.scholarship-flip:hover .scholarship-front::before {
+  animation: scholarshipShimmer 0.45s ease forwards;
+}
+@keyframes scholarshipShimmer {
+  from { left: -80%; opacity: 1; }
+  to   { left: 140%; opacity: 0; }
+}
+
+/* ~20 hours strikethrough animation */
+.strikethrough-anim {
+  position: relative;
+  white-space: nowrap;
+}
+.strikethrough-anim::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 1.5px;
+  width: 0;
+  background: currentColor;
+  animation: strikeAnim 0.5s ease forwards;
+  animation-delay: 1.2s;
+}
+@keyframes strikeAnim {
+  from { width: 0; }
+  to   { width: 100%; }
 }
 
 /* Textarea auto-resize */
