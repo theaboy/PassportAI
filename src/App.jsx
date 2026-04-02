@@ -3,19 +3,24 @@ import LandingHero from './components/LandingHero'
 import LoadingState from './components/LoadingState'
 import PassportDashboard from './components/PassportDashboard'
 import FollowUpChat from './components/FollowUpChat'
+import DiscoverFeed from './components/DiscoverFeed'
 import { extractProfile, generatePassport } from './api/claude'
 
 // App states: 'landing' | 'loading' | 'passport'
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState('passport')
   const [appState, setAppState] = useState('landing')
   const [profile, setProfile] = useState(null)
   const [passport, setPassport] = useState(null)
   const [error, setError] = useState(null)
+  const [draftText, setDraftText] = useState('')
 
   const handleSubmit = async (userText) => {
     setError(null)
     setAppState('loading')
+    setActiveTab('passport')
+    setDraftText(userText)
 
     try {
       // Call 1: Extract profile
@@ -34,36 +39,59 @@ export default function App() {
     }
   }
 
-  const handleReset = () => {
+  const handleReset = (nextDraft = '') => {
     setAppState('landing')
     setProfile(null)
     setPassport(null)
     setError(null)
+    setDraftText(nextDraft)
+  }
+
+  const handleDiscoverSelect = (country) => {
+    const prompt = `I want to immigrate to ${country}`
+    handleReset(prompt)
+    setActiveTab('passport')
   }
 
   return (
     <div className="min-h-screen bg-passport-navy font-sans">
-      {appState === 'landing' && (
+      {activeTab === 'discover' && (
+        <DiscoverFeed
+          onOpenPassport={handleDiscoverSelect}
+          onSelectTab={setActiveTab}
+        />
+      )}
+
+      {activeTab === 'passport' && appState === 'landing' && (
         <div>
           {error && (
             <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl bg-rose-500/20 border border-rose-500/30 text-rose-300 text-sm max-w-md text-center shadow-xl">
               {error}
             </div>
           )}
-          <LandingHero onSubmit={handleSubmit} isLoading={false} />
+          <LandingHero
+            onSubmit={handleSubmit}
+            isLoading={false}
+            value={draftText}
+            onChange={setDraftText}
+            activeTab={activeTab}
+            onSelectTab={setActiveTab}
+          />
         </div>
       )}
 
-      {appState === 'loading' && (
+      {activeTab === 'passport' && appState === 'loading' && (
         <LoadingState profile={profile} />
       )}
 
-      {appState === 'passport' && profile && passport && (
+      {activeTab === 'passport' && appState === 'passport' && profile && passport && (
         <div>
           <PassportDashboard
             profile={profile}
             passport={passport}
             onReset={handleReset}
+            activeTab={activeTab}
+            onSelectTab={setActiveTab}
           />
           <FollowUpChat
             profile={profile}

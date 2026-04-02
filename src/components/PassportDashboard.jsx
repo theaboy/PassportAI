@@ -1,4 +1,5 @@
 import ProfileBadge from './ProfileBadge'
+import TopNav from './TopNav'
 
 // ---- Section Icons (inline SVG) ----
 
@@ -347,7 +348,7 @@ function CommunitySection({ data }) {
 }
 
 // ---- Main Dashboard ----
-export default function PassportDashboard({ profile, passport, onReset }) {
+export default function PassportDashboard({ profile, passport, onReset, activeTab, onSelectTab }) {
   const name = profile?.name && profile.name !== 'Newcomer' ? profile.name : 'Your'
   const city = profile?.city
 
@@ -355,18 +356,14 @@ export default function PassportDashboard({ profile, passport, onReset }) {
     <div className="min-h-screen bg-passport-navy dot-grid">
       {/* Header */}
       <div className="sticky top-0 z-10 bg-passport-navy/80 backdrop-blur border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-sm">
-              P
-            </div>
-            <div>
-              <div className="text-sm font-semibold text-white">PassportAI</div>
-              <div className="text-xs text-slate-500">Life Passport Generated</div>
-            </div>
-          </div>
+        <TopNav
+          activeTab={activeTab}
+          onSelectTab={onSelectTab}
+          rightLabel="Life Passport Generated"
+        />
+        <div className="max-w-5xl mx-auto px-6 pb-4 flex items-center justify-end">
           <button
-            onClick={onReset}
+            onClick={() => onReset()}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 text-slate-400 text-xs hover:border-white/20 hover:text-white transition-all"
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

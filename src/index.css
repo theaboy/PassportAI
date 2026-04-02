@@ -8,6 +8,7 @@
   }
 
   body {
+    margin: 0;
     background-color: #0A0F1E;
     color: #F1F5F9;
     font-family: 'Inter', system-ui, sans-serif;
@@ -173,6 +174,26 @@
 
 .progress-bar {
   animation: progressFill 2.5s ease-out forwards;
+}
+
+@keyframes discoverArrow {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.discover-arrow {
+  animation: discoverArrow 1.6s ease-in-out infinite;
+}
+
+.discover-scroll {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
 }
 
 /* Textarea auto-resize */
