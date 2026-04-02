@@ -1,31 +1,50 @@
 import express from 'express'
 import cors from 'cors'
-import Anthropic from '@anthropic-ai/sdk'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 import dotenv from 'dotenv'
+
 dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3001
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash'
 
 app.use(cors({ origin: 'http://localhost:5173' }))
 app.use(express.json({ limit: '2mb' }))
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+const apiKey = process.env.GEMINI_API_KEY?.trim()
+const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null
+const model = genAI?.getGenerativeModel({ model: GEMINI_MODEL })
 
 function stripJsonFences(text) {
   return text.replace(/```json\n?|\n?```/g, '').replace(/```\n?|\n?```/g, '').trim()
 }
 
-// Call 1 — Profile Extraction
+function getErrorMessage(err) {
+  const candidates = [
+    err?.message,
+    err?.error?.message,
+    err?.response?.data?.error?.message,
+    err?.details,
+  ]
+
+  return candidates.find(Boolean) || 'Unknown Gemini error'
+}
+
+function requireModel(res) {
+  if (model) return true
+
+  res.status(500).json({ error: 'Server is missing GEMINI_API_KEY in .env' })
+  return false
+}
+
 app.post('/api/extract-profile', async (req, res) => {
   const { userText } = req.body
   if (!userText) return res.status(400).json({ error: 'userText is required' })
+  if (!requireModel(res)) return
 
   try {
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 512,
-      system: `You are an immigration profile extractor. Given a free-form user description, extract and return ONLY a JSON object with these exact fields:
+    const prompt = `You are an immigration profile extractor. Given a free-form user description, extract and return ONLY a JSON object with these exact fields:
 - nationality: string (e.g. "Moroccan")
 - city: string (e.g. "Montreal")
 - field: string (e.g. "Software Engineering")
@@ -35,29 +54,28 @@ app.post('/api/extract-profile', async (req, res) => {
 - education_level: string (e.g. "Bachelor's", "Master's", "High School")
 - name: string (first name only if mentioned, else "Newcomer")
 
-Return valid JSON only. No markdown. No explanation.`,
-      messages: [{ role: 'user', content: userText }]
-    })
+Return valid JSON only. No markdown. No explanation.
 
-    const text = stripJsonFences(response.content[0].text)
+User description: ${userText}`
+
+    const result = await model.generateContent(prompt)
+    const text = stripJsonFences(result.response.text())
     const profile = JSON.parse(text)
     res.json(profile)
   } catch (err) {
-    console.error('Profile extraction error:', err.message)
-    res.status(500).json({ error: 'Failed to extract profile. Check your API key.' })
+    const message = getErrorMessage(err)
+    console.error('Profile extraction error:', message)
+    res.status(500).json({ error: `Gemini request failed: ${message}` })
   }
 })
 
-// Call 2 — Passport Generation
 app.post('/api/generate-passport', async (req, res) => {
   const { profile, data } = req.body
   if (!profile || !data) return res.status(400).json({ error: 'profile and data are required' })
+  if (!requireModel(res)) return
 
   try {
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 3000,
-      system: `You are PassportAI — an expert Canadian immigration navigator. Given a user profile and a resource database, generate a fully personalized Life Passport.
+    const prompt = `You are PassportAI, an expert Canadian immigration navigator. Given a user profile and a resource database, generate a fully personalized Life Passport.
 
 Return ONLY a valid JSON object with this exact structure:
 {
@@ -94,32 +112,32 @@ Return ONLY a valid JSON object with this exact structure:
   }
 }
 
-Be specific and relevant. Only include scholarships that actually match their field/nationality/visa type. Only include community orgs in their city. Return valid JSON only — no markdown, no text outside the JSON.`,
-      messages: [{
-        role: 'user',
-        content: `User Profile:\n${JSON.stringify(profile, null, 2)}\n\nAvailable Resources:\n${JSON.stringify(data, null, 2)}`
-      }]
-    })
+Be specific and relevant. Only include scholarships that actually match their field/nationality/visa type. Only include community orgs in their city. Return valid JSON only, with no markdown and no text outside the JSON.
 
-    const text = stripJsonFences(response.content[0].text)
+User Profile:
+${JSON.stringify(profile, null, 2)}
+
+Available Resources:
+${JSON.stringify(data, null, 2)}`
+
+    const result = await model.generateContent(prompt)
+    const text = stripJsonFences(result.response.text())
     const passport = JSON.parse(text)
     res.json(passport)
   } catch (err) {
-    console.error('Passport generation error:', err.message)
-    res.status(500).json({ error: 'Failed to generate passport.' })
+    const message = getErrorMessage(err)
+    console.error('Passport generation error:', message)
+    res.status(500).json({ error: `Gemini request failed: ${message}` })
   }
 })
 
-// Call 3 — Follow-up Chat
 app.post('/api/follow-up', async (req, res) => {
   const { messages, profile, passport } = req.body
   if (!messages || !profile) return res.status(400).json({ error: 'messages and profile required' })
+  if (!requireModel(res)) return
 
   try {
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1024,
-      system: `You are PassportAI — a warm, knowledgeable Canadian immigration guide.
+    const systemContext = `You are PassportAI, a warm, knowledgeable Canadian immigration guide.
 
 The user's profile: ${JSON.stringify(profile)}
 Their generated life passport: ${JSON.stringify(passport)}
@@ -128,21 +146,35 @@ Answer their follow-up questions with:
 - Specific, actionable advice
 - Links or contact info when relevant
 - A conversational but professional tone
-- Brevity — 2-4 sentences unless more detail is needed
-- Empathy — moving to a new country is hard
+- Brevity, 2-4 sentences unless more detail is needed
+- Empathy, moving to a new country is hard
 
-Always answer in the same language the user is writing in (French or English).`,
-      messages
+Always answer in the same language the user is writing in (French or English).`
+
+    const chat = model.startChat({
+      history: messages.slice(0, -1).map((m) => ({
+        role: m.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: m.content }],
+      })),
     })
 
-    res.json({ reply: response.content[0].text })
+    const lastMessage = messages[messages.length - 1]
+    const fullPrompt = messages.length === 1
+      ? `${systemContext}\n\nUser: ${lastMessage.content}`
+      : lastMessage.content
+
+    const result = await chat.sendMessage(fullPrompt)
+    res.json({ reply: result.response.text() })
   } catch (err) {
-    console.error('Follow-up error:', err.message)
-    res.status(500).json({ error: 'Failed to get response.' })
+    const message = getErrorMessage(err)
+    console.error('Follow-up error:', message)
+    res.status(500).json({ error: `Gemini request failed: ${message}` })
   }
 })
 
 app.listen(PORT, () => {
-  console.log(`\n🛂  PassportAI server running on http://localhost:${PORT}`)
-  console.log(`📡  Waiting for requests from the React app...\n`)
+  console.log(`\nPassportAI server running on http://localhost:${PORT}`)
+  console.log(`Gemini model: ${GEMINI_MODEL}`)
+  console.log(apiKey ? 'GEMINI_API_KEY detected.' : 'GEMINI_API_KEY is missing.')
+  console.log('Waiting for requests from the React app...\n')
 })
