@@ -196,6 +196,89 @@
   overscroll-behavior-y: contain;
 }
 
+.passport-book {
+  position: relative;
+  overflow: hidden;
+}
+
+.passport-book::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(245, 158, 11, 0.18), transparent);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.passport-stamp-icon {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.passport-stamp-icon.is-open {
+  transform: rotate(-2deg) scale(1.03);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+.passport-expand {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.passport-expand.is-open {
+  max-height: 2200px;
+}
+
+.scholarship-flip {
+  perspective: 1200px;
+}
+
+.scholarship-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.scholarship-flip:hover .scholarship-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.scholarship-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.25rem;
+  backface-visibility: hidden;
+}
+
+.scholarship-back {
+  transform: rotateY(180deg);
+}
+
+.visa-step-item {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.visa-step-item.is-visible {
+  animation: visaStepEnter 0.32s ease forwards;
+}
+
+@keyframes visaStepEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Textarea auto-resize */
 textarea {
   resize: none;
