@@ -54,7 +54,7 @@ export default function LoadingState({ profile }) {
   const city = profile?.city
 
   return (
-    <div className="min-h-screen mesh-bg dot-grid flex flex-col items-center justify-center px-6">
+    <div className="theme-bg min-h-screen mesh-bg dot-grid flex flex-col items-center justify-center px-6">
       <div className="w-full max-w-md space-y-10">
 
         {/* Passport Icon Animation */}
@@ -85,7 +85,7 @@ export default function LoadingState({ profile }) {
               : 'Building Your Life Passport'}
           </h2>
           {(nationality || city) && (
-            <p className="text-slate-500 text-sm">
+            <p className="theme-muted text-sm">
               {[nationality, city].filter(Boolean).join(' · ')}
             </p>
           )}
@@ -149,23 +149,23 @@ export default function LoadingState({ profile }) {
 
         {/* Progress Bar */}
         <div className="space-y-1.5">
-          <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+            <div className="theme-pill h-1 rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-amber-500 to-amber-300 rounded-full transition-all duration-500"
               style={{ width: `${Math.min(((completedSteps.length) / STEPS.length) * 100 + 15, 95)}%` }}
             />
           </div>
-          <div className="flex justify-between text-xs text-slate-600 font-mono">
+          <div className="theme-muted flex justify-between text-xs font-mono">
             <span>Processing...</span>
             <span>{elapsed}s</span>
           </div>
         </div>
 
         {/* Rotating Fact */}
-        <div className="text-center px-4 py-4 rounded-xl border border-white/5 bg-white/2 min-h-[72px] flex items-center justify-center">
+        <div className="theme-surface theme-border text-center px-4 py-4 rounded-xl border min-h-[72px] flex items-center justify-center">
           <p
             key={factIndex}
-            className="text-slate-500 text-sm italic leading-relaxed animate-fade-in"
+            className="theme-muted text-sm italic leading-relaxed animate-fade-in"
           >
             {FACTS[factIndex]}
           </p>

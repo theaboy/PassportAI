@@ -18,7 +18,7 @@ const EXAMPLES = [
 
 const PLACEHOLDER = `Example: "I'm a 23-year-old Moroccan software engineer, I just arrived in Montreal on a student visa. I speak French and Arabic. I'm looking for scholarships, the Moroccan community, and guidance on getting permanent residency."`
 
-export default function LandingHero({ onSubmit, isLoading, value, onChange, activeTab, onSelectTab }) {
+export default function LandingHero({ onSubmit, isLoading, value, onChange, activeTab, onSelectTab, theme, onToggleTheme }) {
   const textareaRef = useRef(null)
 
   useEffect(() => {
@@ -44,11 +44,13 @@ export default function LandingHero({ onSubmit, isLoading, value, onChange, acti
   const wordCount = value.trim().split(/\s+/).filter(Boolean).length
 
   return (
-    <div className="min-h-screen mesh-bg dot-grid flex flex-col">
+    <div className="min-h-screen mesh-bg dot-grid flex flex-col theme-bg">
       <TopNav
         activeTab={activeTab}
         onSelectTab={onSelectTab}
         rightLabel="Gemini-powered · Multi-country"
+        theme={theme}
+        onToggleTheme={onToggleTheme}
       />
 
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16">
@@ -66,7 +68,7 @@ export default function LandingHero({ onSubmit, isLoading, value, onChange, acti
               <br />
               <span className="text-gradient">mapped in seconds.</span>
             </h1>
-            <p className="text-slate-400 text-lg max-w-lg mx-auto leading-relaxed">
+            <p className="theme-muted text-lg max-w-lg mx-auto leading-relaxed">
               Describe where you are, where you want to go, and what matters most. Get a personalized passport with visa steps, education options, career guidance, and local community leads.
             </p>
           </div>
@@ -79,13 +81,13 @@ export default function LandingHero({ onSubmit, isLoading, value, onChange, acti
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-amber-400 font-bold text-lg">{stat.value}</div>
-                <div className="text-slate-500 text-xs mt-0.5">{stat.label}</div>
+                <div className="theme-muted text-xs mt-0.5">{stat.label}</div>
               </div>
             ))}
           </div>
 
           <div className="border-gradient rounded-2xl p-1 animate-fade-in-up stagger-4 glow-amber">
-            <div className="bg-passport-card rounded-xl overflow-hidden">
+            <div className="theme-surface rounded-xl overflow-hidden">
               <textarea
                 ref={textareaRef}
                 value={value}
@@ -93,12 +95,12 @@ export default function LandingHero({ onSubmit, isLoading, value, onChange, acti
                 onKeyDown={handleKeyDown}
                 placeholder={PLACEHOLDER}
                 rows={4}
-                className="w-full bg-transparent px-5 pt-5 pb-3 text-slate-200 placeholder:text-slate-600 text-base leading-relaxed outline-none font-sans min-h-[120px]"
+                className="w-full bg-transparent px-5 pt-5 pb-3 theme-text placeholder:theme-muted text-base leading-relaxed outline-none font-sans min-h-[120px]"
               />
 
-              <div className="flex items-center justify-between px-5 py-3 border-t border-white/5">
+              <div className="theme-border flex items-center justify-between px-5 py-3 border-t">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs text-slate-600 font-mono">
+                  <span className="theme-muted text-xs font-mono">
                     {wordCount > 0 ? `${wordCount} words` : 'Ctrl/Cmd + Enter to submit'}
                   </span>
                   {wordCount > 0 && wordCount < 15 && (
@@ -129,13 +131,13 @@ export default function LandingHero({ onSubmit, isLoading, value, onChange, acti
           </div>
 
           <div className="space-y-2 animate-fade-in-up stagger-5">
-            <p className="text-center text-xs text-slate-600 uppercase tracking-widest">Try an example</p>
+            <p className="theme-muted text-center text-xs uppercase tracking-widest">Try an example</p>
             <div className="flex flex-wrap justify-center gap-2">
               {EXAMPLES.map((ex) => (
                 <button
                   key={ex.label}
                   onClick={() => fillExample(ex)}
-                  className="px-3 py-1.5 rounded-full border border-white/8 bg-white/3 text-slate-400 text-xs hover:border-amber-400/30 hover:text-amber-300 hover:bg-amber-400/5 transition-all duration-150"
+                  className="theme-pill px-3 py-1.5 rounded-full border text-xs transition-all duration-150 hover:border-amber-400/30 hover:text-amber-300 hover:bg-amber-400/5"
                 >
                   {ex.label}
                 </button>
@@ -145,7 +147,7 @@ export default function LandingHero({ onSubmit, isLoading, value, onChange, acti
         </div>
       </div>
 
-      <div className="text-center py-4 text-xs text-slate-700 border-t border-white/5">
+      <div className="theme-footer theme-border text-center py-4 text-xs border-t">
         Built at McGill Data Network Hackathon · April 2026 · Theme: Automate. Optimize. Innovate.
       </div>
     </div>

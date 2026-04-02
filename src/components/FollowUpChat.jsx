@@ -109,7 +109,8 @@ export default function FollowUpChat({ profile, passport }) {
   const isEmpty = messages.length === 0
 
   return (
-    <div className="border border-white/[0.08] rounded-[32px] mx-auto max-w-6xl my-0 followup-glass" style={{ margin: '0 1.5rem 2rem' }}>
+    <div className="px-6 pb-8">
+      <div className="theme-surface theme-border border rounded-[32px] mx-auto w-full max-w-6xl followup-glass">
       <div className="px-6 py-8">
 
         {/* Header */}
@@ -118,8 +119,8 @@ export default function FollowUpChat({ profile, passport }) {
             P
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white">Ask PassportAI</h3>
-            <p className="text-xs text-slate-500">Ask anything about your passport, visa, scholarships, or next steps</p>
+            <h3 className="theme-text text-sm font-semibold">Ask PassportAI</h3>
+            <p className="theme-muted text-xs">Ask anything about your passport, visa, scholarships, or next steps</p>
           </div>
         </div>
 
@@ -130,7 +131,7 @@ export default function FollowUpChat({ profile, passport }) {
               <button
                 key={q}
                 onClick={() => send(q)}
-                className="text-xs px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-slate-400 transition-all duration-200 hover:border-amber-400/50 hover:bg-amber-400/15 hover:text-amber-200"
+                className="theme-pill text-xs px-3 py-1.5 rounded-full border transition-all duration-200 hover:border-amber-400/50 hover:bg-amber-400/15 hover:text-amber-200"
               >
                 {q}
               </button>
@@ -157,7 +158,7 @@ export default function FollowUpChat({ profile, passport }) {
         )}
 
         {/* Input Bar */}
-        <div className="flex items-end gap-3 p-1 rounded-xl border border-white/8 bg-passport-card focus-within:border-amber-400/30 transition-colors">
+        <div className="theme-surface theme-border flex items-end gap-3 p-1 rounded-xl border focus-within:border-amber-400/30 transition-colors">
           <textarea
             ref={inputRef}
             value={input}
@@ -165,7 +166,7 @@ export default function FollowUpChat({ profile, passport }) {
             onKeyDown={handleKeyDown}
             placeholder="Ask a follow-up question..."
             rows={1}
-            className="flex-1 bg-transparent px-4 py-3 text-sm text-slate-200 placeholder:text-slate-600 outline-none resize-none leading-relaxed"
+            className="theme-text flex-1 bg-transparent px-4 py-3 text-sm placeholder:theme-muted outline-none resize-none leading-relaxed"
             style={{ minHeight: '44px', maxHeight: '120px' }}
           />
           <button
@@ -183,10 +184,11 @@ export default function FollowUpChat({ profile, passport }) {
           </button>
         </div>
 
-        <p className="mt-2 text-xs text-center text-slate-700">
+        <p className="theme-footer mt-2 text-xs text-center">
           PassportAI provides general guidance. For legal decisions, consult a certified immigration consultant.
         </p>
 
+      </div>
       </div>
     </div>
   )

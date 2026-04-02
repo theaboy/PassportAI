@@ -105,14 +105,16 @@ function ScrollArrow() {
   )
 }
 
-export default function DiscoverFeed({ onOpenPassport, onSelectTab }) {
+export default function DiscoverFeed({ onOpenPassport, onSelectTab, theme, onToggleTheme }) {
   return (
-    <div className="relative h-screen overflow-hidden bg-passport-navy">
-      <div className="fixed inset-x-0 top-0 z-20 bg-passport-navy/65 backdrop-blur-xl">
+    <div className="theme-bg relative h-screen overflow-hidden">
+      <div className="theme-nav fixed inset-x-0 top-0 z-20 backdrop-blur-xl">
         <TopNav
           activeTab="discover"
           onSelectTab={onSelectTab}
           rightLabel="Swipe countries · source-backed facts"
+          theme={theme}
+          onToggleTheme={onToggleTheme}
         />
       </div>
 

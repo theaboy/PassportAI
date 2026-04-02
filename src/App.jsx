@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import LandingHero from './components/LandingHero'
 import LoadingState from './components/LoadingState'
 import PassportDashboard from './components/PassportDashboard'
@@ -9,12 +9,17 @@ import { extractProfile, generatePassport } from './api/claude'
 // App states: 'landing' | 'loading' | 'passport'
 
 export default function App() {
+  const [theme, setTheme] = useState(() => localStorage.getItem('passport-theme') || 'dark')
   const [activeTab, setActiveTab] = useState('passport')
   const [appState, setAppState] = useState('landing')
   const [profile, setProfile] = useState(null)
   const [passport, setPassport] = useState(null)
   const [error, setError] = useState(null)
   const [draftText, setDraftText] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('passport-theme', theme)
+  }, [theme])
 
   const handleSubmit = async (userText) => {
     setError(null)
@@ -54,11 +59,13 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-passport-navy font-sans">
+    <div className={`app-shell min-h-screen font-sans ${theme === 'light' ? 'light' : ''}`}>
       {activeTab === 'discover' && (
         <DiscoverFeed
           onOpenPassport={handleDiscoverSelect}
           onSelectTab={setActiveTab}
+          theme={theme}
+          onToggleTheme={() => setTheme((current) => current === 'light' ? 'dark' : 'light')}
         />
       )}
 
@@ -76,6 +83,8 @@ export default function App() {
             onChange={setDraftText}
             activeTab={activeTab}
             onSelectTab={setActiveTab}
+            theme={theme}
+            onToggleTheme={() => setTheme((current) => current === 'light' ? 'dark' : 'light')}
           />
         </div>
       )}
@@ -92,6 +101,8 @@ export default function App() {
             onReset={handleReset}
             activeTab={activeTab}
             onSelectTab={setActiveTab}
+            theme={theme}
+            onToggleTheme={() => setTheme((current) => current === 'light' ? 'dark' : 'light')}
           />
           <FollowUpChat
             profile={profile}

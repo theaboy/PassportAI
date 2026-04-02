@@ -29,10 +29,19 @@ export default function ProfileBadge({ profile }) {
     <div className="flex flex-wrap items-center gap-2 py-3 px-4 rounded-xl border border-amber-400/15 bg-amber-400/5 animate-fade-in-up">
       {/* Avatar */}
       <div
-        className="w-[52px] h-[52px] rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-xl flex-shrink-0"
+        className="relative w-[52px] h-[52px] rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-xl flex-shrink-0 overflow-hidden"
         style={{ boxShadow: '0 0 0 2px rgba(245,158,11,0.35), 0 0 20px rgba(245,158,11,0.25)' }}
       >
-        {displayName ? displayName[0].toUpperCase() : nationality?.[0]?.toUpperCase() || '?'}
+        {nationality?.toLowerCase().includes('morocc') && (
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-20"
+            style={{ backgroundImage: "url('https://flagcdn.com/w80/ma.png')" }}
+            aria-hidden="true"
+          />
+        )}
+        <span className="relative z-10">
+          {displayName ? displayName[0].toUpperCase() : nationality?.[0]?.toUpperCase() || '?'}
+        </span>
       </div>
 
       {/* Name */}

@@ -491,7 +491,7 @@ function SectionStamp({ sectionKey, data, isOpen, onToggle, children }) {
   )
 }
 
-export default function PassportDashboard({ profile, passport, onReset, activeTab, onSelectTab }) {
+export default function PassportDashboard({ profile, passport, onReset, activeTab, onSelectTab, theme, onToggleTheme }) {
   const [openSection, setOpenSection] = useState(null)
   const [careerNode, setCareerNode] = useState(0)
   const name = profile?.name && profile.name !== 'Newcomer' ? profile.name : 'Your'
@@ -511,29 +511,31 @@ export default function PassportDashboard({ profile, passport, onReset, activeTa
   }
 
   return (
-    <div className="min-h-screen passport-page">
-      <div className="sticky top-0 z-10 border-b border-white/5 bg-[#080c14]/90 backdrop-blur">
+    <div className="theme-bg min-h-screen passport-page">
+      <div className="theme-nav sticky top-0 z-10 backdrop-blur">
         <TopNav
           activeTab={activeTab}
           onSelectTab={onSelectTab}
           rightLabel="Life Passport Generated"
+          theme={theme}
+          onToggleTheme={onToggleTheme}
+          actions={(
+            <button
+              onClick={() => onReset()}
+              className="theme-pill inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs transition-all hover:text-[var(--app-text)]"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                <path d="M3 3v5h5" />
+              </svg>
+              New passport
+            </button>
+          )}
         />
-        <div className="mx-auto flex max-w-6xl items-center justify-end px-6 pb-4">
-          <button
-            onClick={() => onReset()}
-            className="flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-slate-400 transition-all hover:border-white/20 hover:text-white"
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-              <path d="M3 3v5h5" />
-            </svg>
-            New passport
-          </button>
-        </div>
       </div>
 
       <div className="mx-auto max-w-6xl px-6 py-8 space-y-6">
-        <div className="passport-book rounded-[32px] border border-amber-400/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-6 shadow-[0_22px_80px_rgba(0,0,0,0.35)]">
+        <div className="passport-book passport-book-animated rounded-[32px] border border-amber-400/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-6 shadow-[0_22px_80px_rgba(0,0,0,0.35)]">
           <div className="relative space-y-3 animate-fade-in-up">
             {flagCode && (
               <img
@@ -554,10 +556,10 @@ export default function PassportDashboard({ profile, passport, onReset, activeTa
                 </div>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">
+                <h1 className="theme-text text-2xl font-bold">
                   {name === 'Your' ? 'Your' : `${name}'s`} Life Passport
                 </h1>
-                <p className="text-sm text-slate-500">
+                <p className="theme-muted text-sm">
                   Your Life Passport — click a section to open it
                 </p>
               </div>
@@ -594,9 +596,9 @@ export default function PassportDashboard({ profile, passport, onReset, activeTa
         </div>
 
         <div className="flex items-center justify-center gap-2 py-2 animate-fade-in">
-          <span className="text-xs text-slate-600">This roadmap used to take</span>
-          <span className="text-xs font-semibold text-slate-400 strikethrough-anim">~20 hours</span>
-          <span className="text-xs text-slate-600">of manual research.</span>
+          <span className="theme-muted text-xs">This roadmap used to take</span>
+          <span className="theme-muted text-xs font-semibold strikethrough-anim">~20 hours</span>
+          <span className="theme-muted text-xs">of manual research.</span>
           <span className="text-xs font-semibold text-amber-400">You just saved it all.</span>
         </div>
       </div>
