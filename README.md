@@ -27,4 +27,4 @@ npm run dev
 ```
 
 ## Team
-Built in 3.5 hours by Aymane & [friend's name]
+Built in 3.5 hours by Aymane & Ayoub
